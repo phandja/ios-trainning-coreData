@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Place.h"
 
 @interface DetailViewController : UIViewController
+
+@property (nonatomic, strong) Place *place;
 
 @end

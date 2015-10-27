@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  SaveViewControl.h
 //  ios-training-core-data
 //
 //  Created by Treinamento Mobile on 10/27/15.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UITableViewController
-
+@interface SaveViewControl : UIViewController
 
 @end
-

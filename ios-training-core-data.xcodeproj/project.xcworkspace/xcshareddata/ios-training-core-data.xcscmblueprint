@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "B3B28A7B8B56664CEADB3D5BF263AEC188C20078",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "B3B28A7B8B56664CEADB3D5BF263AEC188C20078" : 0,
+    "656912B9325D4BF5E17E6566A4002DB66098FC3E" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "864A719C-44C6-43DD-BF50-484ED61867F0",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "B3B28A7B8B56664CEADB3D5BF263AEC188C20078" : "ios-training-core-data\/",
+    "656912B9325D4BF5E17E6566A4002DB66098FC3E" : "app-ios-navegation\/lw-ios-training-table-view\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "ios-training-core-data",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "ios-training-core-data.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/squiter\/lw-ios-training-table-view.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "656912B9325D4BF5E17E6566A4002DB66098FC3E"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/phandja\/ios-trainning-coreData.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "B3B28A7B8B56664CEADB3D5BF263AEC188C20078"
+    }
+  ]
+}

@@ -11,12 +11,15 @@
 #import "AppDelegate.h"
 #import "PlaceTableViewCell.h"
 #import "DetailViewController.h"
+#import "UINavigationController+Categoria.h"
 
-@interface ViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface ViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
-@property (nonatomic, weak) IBOutlet UITableView *tableview;
-@property (nonatomic, strong) NSArray *data;
+@property (nonatomic, strong) NSMutableArray *data;
+@property (nonatomic, strong) NSArray *dado;
 @property (nonatomic, weak) IBOutlet UIImageView *imageSelect;
+@property (nonatomic, weak) IBOutlet UITextField *cityName;
+@property (nonatomic, strong) NSData *image;
 @end
 
 @implementation ViewController
@@ -24,15 +27,13 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
-    [self  setupInitialValues];
-    
+    NSLog(@"view Did Load --- ");    [self  setupInitialValues];
     // Do any additional setup after loading the view, typically from a nib.
 }
 
 // Printing data in the table View
 - (void)setupInitialValues {
-    
-    self.data = [self fetchEntries];
+    self.dado = [self fetchEntries];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -41,14 +42,13 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.data.count;
+    return self.dado.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     PlaceTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"
                                                                   forIndexPath:indexPath];
-    
-    Place *p = self.data[indexPath.row];
+    Place *p = self.dado[indexPath.row];
     cell.nameLabel.text = p.name;
     cell.cityImageView.image = [UIImage imageWithData:p.image];
     
@@ -56,66 +56,73 @@
 }
 
 // Fetching dada from de data base
-- (NSArray *) fetchEntries
-{
+- (NSArray *) fetchEntries {
+    
     NSManagedObjectContext *context = ((AppDelegate *)[UIApplication sharedApplication].delegate).managedObjectContext;
-    
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Place"];
-    
     //request.predicate = [NSPredicate predicateWithFormat:@"name = %@", @"Sao Paulo"];
-    
     NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:NO];
     request.sortDescriptors = @[descriptor];
     
     NSArray *array = [context executeFetchRequest:request error:nil];
     
-    //for (Place *p in array) {
-        
+    for (Place *p in array) {
         //receber dados e printar no table view
-        
-        //NSLog(@"%@",p.name);
-   // }
+        NSLog(@"%@",p.name);
+    }
     return array;
 }
 
 // Putting data in the data base
-- (void) newEntry
-{
-    NSManagedObjectContext *context = ((AppDelegate *)[UIApplication sharedApplication].delegate).managedObjectContext;
+- (void) newEntry: (NSString *) imageName {
     
+    NSLog(@"Iniciando New Entry --- ");
+    NSManagedObjectContext *context = ((AppDelegate *)[UIApplication sharedApplication].delegate).managedObjectContext;
     Place *place = [NSEntityDescription insertNewObjectForEntityForName:@"Place"
                                                  inManagedObjectContext:context];
-    
-    place.name = @"Curitiba";
+    place.name = imageName;
     place.image = UIImagePNGRepresentation([UIImage imageNamed:@"curitiba"]);
-    
     NSError *error = nil;
+    
     if (![ context save:&error]) {
         NSLog(@"%@", error);
     }
     
-}
-
-- (IBAction)pickImage:(id)sender {
-    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    picker.delegate = self;
+    else {
+        NSLog(@"Success!! -- ");
+    }
+    //[self fetchEntries];
     
-    [self presentViewController:picker animated:YES completion:nil];
 }
 
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(nonnull NSDictionary<NSString *,id> *)info {
-    self.imageSelect.image = info[UIImagePickerControllerOriginalImage];
-    [self dismissViewControllerAnimated:YES completion:nil];
+- (IBAction)savecityt:(UIButton *)sender{
+ 
+    NSLog(@"Metodo save --- ");
+    [self newEntry:self.cityName.text];
 }
 
-/*
+- (IBAction)pickImage:(id)sender{
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    picker.allowsEditing = YES;
+    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    
+    [self presentViewController:picker animated:YES completion:NULL];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
+{
+    UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
+    self.imageSelect.image = chosenImage;
+    
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+}
 
 // Removed because we add a segue to any cell, so we don't need this alert anymore
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    City *city = self.data[indexPath.row];
+    Place *p = self.data[indexPath.row];
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Cidade"
-                                                                             message:city.name
+                                                                             message:p.name
                                                                       preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *detailAction = [UIAlertAction actionWithTitle:@"Detalhes"
@@ -149,20 +156,9 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if ([segue.identifier isEqualToString:@"CityDetailSegue"]) {
         DetailViewController *detailViewC = segue.destinationViewController;
-        City *city = self.data[self.tableView.indexPathForSelectedRow.row];
-        detailViewC.city = city;
+        Place *p = self.data[self.tableView.indexPathForSelectedRow.row];
+        detailViewC.place = p;
     }
-}*/
-
-
-
-- (IBAction)savecityt:(id)sender{
-    
-    //UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
-    //imageView.layer.cornerRadius = 15.0f;
-    //imageView.layer.masksToBounds = YES;
-    //imageView.image = [UIImage imageNamed:@"masp"];
 }
-
 
 @end

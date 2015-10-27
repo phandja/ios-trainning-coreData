@@ -22,10 +22,10 @@
             </objects>
             <point key="canvasLocation" x="-919" y="-1278"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Listing Cities-->
         <scene sceneID="xFW-po-pcX">
             <objects>
-                <tableViewController id="h1N-L2-Jnt" sceneMemberID="viewController">
+                <tableViewController id="h1N-L2-Jnt" customClass="ViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="114" sectionHeaderHeight="28" sectionFooterHeight="28" id="CJm-7I-TfP">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -65,16 +65,12 @@
                                 </connections>
                             </tableViewCell>
                         </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="h1N-L2-Jnt" id="KMc-Gq-k1q"/>
-                            <outlet property="delegate" destination="h1N-L2-Jnt" id="Ij5-B7-o8W"/>
-                        </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="47e-ep-Uxm">
-                        <barButtonItem key="rightBarButtonItem" title="Item" systemItem="add" id="hOv-1l-J1I">
+                    <navigationItem key="navigationItem" title="Listing Cities" id="47e-ep-Uxm">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="hOv-1l-J1I">
                             <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <segue destination="Nss-b6-u8Q" kind="presentation" id="kAc-zT-m2f"/>
+                                <segue destination="Nss-b6-u8Q" kind="presentation" id="rAe-Wu-gVC"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -83,10 +79,10 @@
             </objects>
             <point key="canvasLocation" x="-209" y="-1278"/>
         </scene>
-        <!--Title-->
+        <!--Add City-->
         <scene sceneID="RIj-DP-A3R">
             <objects>
-                <viewController id="Nss-b6-u8Q" sceneMemberID="viewController">
+                <viewController id="Nss-b6-u8Q" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Z6J-bm-uw4"/>
                         <viewControllerLayoutGuide type="bottom" id="NHF-0X-1Sc"/>
@@ -109,6 +105,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="32G-1x-R1f">
                                 <rect key="frame" x="551" y="90" width="34" height="30"/>
                                 <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="savecityt:" destination="Nss-b6-u8Q" eventType="touchUpInside" id="iX5-G3-qeU"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qlm-jI-CaU">
                                 <rect key="frame" x="15" y="90" width="85" height="21"/>
@@ -117,11 +116,18 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2OZ-zT-odk">
-                                <rect key="frame" x="30" y="181" width="540" height="389"/>
+                                <rect key="frame" x="30" y="181" width="540" height="345"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8wd-C1-0au">
                                 <rect key="frame" x="238" y="131" width="124" height="30"/>
                                 <state key="normal" title="Select Your Image"/>
+                                <connections>
+                                    <action selector="pickImage:" destination="Nss-b6-u8Q" eventType="touchUpInside" id="AAm-lD-q1R"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XqQ-VZ-YXf">
+                                <rect key="frame" x="114" y="131" width="48" height="30"/>
+                                <state key="normal" title="Cancel"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -153,11 +159,16 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="NOW-rA-ylY"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Add City" id="fn0-ol-M6h"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="cityName" destination="CoB-OZ-iim" id="jak-LA-FCl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Edo-7U-G0F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-207" y="-568"/>
+            <point key="canvasLocation" x="580" y="-1287"/>
         </scene>
     </scenes>
 </document>
