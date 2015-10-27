@@ -10,12 +10,13 @@
 #import "Place.h"
 #import "AppDelegate.h"
 #import "PlaceTableViewCell.h"
+#import "DetailViewController.h"
 
 @interface ViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, weak) IBOutlet UITableView *tableview;
 @property (nonatomic, strong) NSArray *data;
-
+@property (nonatomic, weak) IBOutlet UIImageView *imageSelect;
 @end
 
 @implementation ViewController
@@ -95,7 +96,67 @@
     
 }
 
-- (void) saveCity{
+- (IBAction)pickImage:(id)sender {
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    picker.delegate = self;
+    
+    [self presentViewController:picker animated:YES completion:nil];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(nonnull NSDictionary<NSString *,id> *)info {
+    self.imageSelect.image = info[UIImagePickerControllerOriginalImage];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+/*
+
+// Removed because we add a segue to any cell, so we don't need this alert anymore
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    City *city = self.data[indexPath.row];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Cidade"
+                                                                             message:city.name
+                                                                      preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *detailAction = [UIAlertAction actionWithTitle:@"Detalhes"
+                                                           style:UIAlertActionStyleDefault
+                                                         handler:^(UIAlertAction * _Nonnull action) {
+                                                             [self performSegueWithIdentifier:@"CityDetailSegue" sender:nil];
+                                                         }];
+    [alertController addAction:detailAction];
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancelar"
+                                                           style:UIAlertActionStyleDefault
+                                                         handler:nil];
+    [alertController addAction:cancelAction];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
+}
+
+- (void)tableView:(UITableView *)tableView
+commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
+forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        [self.data removeObjectAtIndex:indexPath.row];
+        [self.tableView deleteRowsAtIndexPaths:@[indexPath]
+                              withRowAnimation:UITableViewRowAnimationAutomatic];
+    }
+}
+
+#pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if ([segue.identifier isEqualToString:@"CityDetailSegue"]) {
+        DetailViewController *detailViewC = segue.destinationViewController;
+        City *city = self.data[self.tableView.indexPathForSelectedRow.row];
+        detailViewC.city = city;
+    }
+}*/
+
+
+
+- (IBAction)savecityt:(id)sender{
     
     //UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
     //imageView.layer.cornerRadius = 15.0f;

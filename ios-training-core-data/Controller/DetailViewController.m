@@ -8,7 +8,11 @@
 
 #import "DetailViewController.h"
 
+
 @interface DetailViewController ()
+
+@property (nonatomic, weak) UIImageView *cityimage;
+@property (nonatomic, weak) UILabel *citylabel;
 
 @end
 
@@ -16,14 +20,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self ]
     // Do any additional setup after loading the view.
+    
+    //self.cityimage.image=[UIImage imageNamed:self.city.imageName];
+    //self.citylabel.text= [self.citylabel.text stringByAppendingString:self.city.name];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (IBAction)cancelButtonTap:(id)sender{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 
 /*
 #pragma mark - Navigation
