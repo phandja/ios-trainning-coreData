@@ -18,6 +18,8 @@
 		3B2833701BDF9BE700DA5F46 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2833681BDF9BE700DA5F46 /* main.m */; };
 		3B2833751BDF9E8400DA5F46 /* Place+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2833721BDF9E8400DA5F46 /* Place+CoreDataProperties.m */; };
 		3B2833761BDF9E8400DA5F46 /* Place.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2833741BDF9E8400DA5F46 /* Place.m */; };
+		3B2833811BDFB46500DA5F46 /* PlaceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2833801BDFB46500DA5F46 /* PlaceTableViewCell.m */; };
+		3B2833841BDFBDF700DA5F46 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2833831BDFBDF700DA5F46 /* DetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +61,10 @@
 		3B2833721BDF9E8400DA5F46 /* Place+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Place+CoreDataProperties.m"; sourceTree = "<group>"; };
 		3B2833731BDF9E8400DA5F46 /* Place.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Place.h; sourceTree = "<group>"; };
 		3B2833741BDF9E8400DA5F46 /* Place.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Place.m; sourceTree = "<group>"; };
+		3B28337F1BDFB46500DA5F46 /* PlaceTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceTableViewCell.h; sourceTree = "<group>"; };
+		3B2833801BDFB46500DA5F46 /* PlaceTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceTableViewCell.m; sourceTree = "<group>"; };
+		3B2833821BDFBDF700DA5F46 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		3B2833831BDFBDF700DA5F46 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +115,8 @@
 		3B2833211BDF9B5C00DA5F46 /* ios-training-core-data */ = {
 			isa = PBXGroup;
 			children = (
+				3B2833781BDFB36E00DA5F46 /* View */,
+				3B2833771BDFB17E00DA5F46 /* Util */,
 				3B2833581BDF9BE700DA5F46 /* AppDelegate */,
 				3B28335B1BDF9BE700DA5F46 /* Controller */,
 				3B28335E1BDF9BE700DA5F46 /* Ressources */,
@@ -149,6 +157,8 @@
 			children = (
 				3B28335C1BDF9BE700DA5F46 /* ViewController.h */,
 				3B28335D1BDF9BE700DA5F46 /* ViewController.m */,
+				3B2833821BDFBDF700DA5F46 /* DetailViewController.h */,
+				3B2833831BDFBDF700DA5F46 /* DetailViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -175,6 +185,22 @@
 				3B2833741BDF9E8400DA5F46 /* Place.m */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3B2833771BDFB17E00DA5F46 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		3B2833781BDFB36E00DA5F46 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3B28337F1BDFB46500DA5F46 /* PlaceTableViewCell.h */,
+				3B2833801BDFB46500DA5F46 /* PlaceTableViewCell.m */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -310,7 +336,9 @@
 				3B28336A1BDF9BE700DA5F46 /* ViewController.m in Sources */,
 				3B28336F1BDF9BE700DA5F46 /* ios_training_core_data.xcdatamodeld in Sources */,
 				3B2833751BDF9E8400DA5F46 /* Place+CoreDataProperties.m in Sources */,
+				3B2833841BDFBDF700DA5F46 /* DetailViewController.m in Sources */,
 				3B2833761BDF9E8400DA5F46 /* Place.m in Sources */,
+				3B2833811BDFB46500DA5F46 /* PlaceTableViewCell.m in Sources */,
 				3B2833701BDF9BE700DA5F46 /* main.m in Sources */,
 				3B2833691BDF9BE700DA5F46 /* AppDelegate.m in Sources */,
 			);
